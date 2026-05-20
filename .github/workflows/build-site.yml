@@ -67,22 +67,18 @@ jobs:
         run: |
           mkdir -p pdfs
 
-          # Shared pandoc options
-          OPTS="--pdf-engine=xelatex \
-            -V geometry:margin=2cm \
-            -V fontsize=11pt \
-            -V colorlinks=true \
-            -V linkcolor=blue \
-            -V urlcolor=blue \
-            -V mainfont=DejaVuSans \
-            -V monofont=DejaVuSansMono \
-            --highlight-style=tango"
-
           for file in handouts/*.md pre-workshop/setup-guide.md exercises/exercise-*.md; do
             filename=$(basename "$file" .md)
-            echo "▶ $file → $filename.pdf"
-            pandoc "$file" -o "pdfs/${filename}.pdf" $OPTS
-            echo "✅ $filename.pdf"
+            echo "Converting: $file"
+            pandoc "$file" -o "pdfs/${filename}.pdf" \
+              --pdf-engine=xelatex \
+              -V geometry:margin=2cm \
+              -V fontsize=11pt \
+              -V colorlinks=true \
+              -V linkcolor=blue \
+              -V urlcolor=blue \
+              --highlight-style=tango
+            echo "Done: ${filename}.pdf"
           done
 
           echo ""
