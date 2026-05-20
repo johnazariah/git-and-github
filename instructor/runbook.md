@@ -14,7 +14,7 @@
 - [ ] Create the **demo repository** on your GitHub account (`research-demo-2026`)
 - [ ] Have the [template repo files](../exercises/template-repo/) ready to push or share
 - [ ] Print handouts: [Git Cheat Sheet](../handouts/git-cheatsheet.md), [Copilot One-Pager](../handouts/copilot-one-pager.md)
-- [ ] Pre-stage the Copilot demo scenario (see Block 6)
+- [ ] Pre-stage the Copilot demo scenario: run `bash instructor/copilot-demo-prep.sh` (see [script](copilot-demo-prep.sh))
 - [ ] Have a backup plan for auth issues: HTTPS clone URLs + `gh auth login` as fallback
 - [ ] Have the **LaTeX paper template** repo ready for the Actions demo (pre-fork `templates/research-paper-template` to your own account, make one commit and verify the PDF Action runs)
 - [ ] Load this runbook on a second screen or tablet so you can glance at it
@@ -180,8 +180,8 @@ Create a simple notebook file (or have one prepared). Explain:
 > "Many of you work in Jupyter notebooks. Let's add one."
 
 ```bash
-# Add a pre-made notebook (have this ready)
-cp ~/workshop-materials/explore.ipynb .
+# Add the pre-made notebook from the workshop materials
+cp /path/to/git-and-github/exercises/template-repo/explore.ipynb .
 git add explore.ipynb
 git commit -m "Add exploratory analysis notebook"
 ```
@@ -583,8 +583,9 @@ Let a few people respond. Then:
 ### Copilot Demo (5 min)
 
 **Setup (do this before the workshop):**
-- Have a repo with a large file committed (or fake it with the scenario)
-- Have GitHub Copilot CLI installed and authenticated
+- Run `bash instructor/copilot-demo-prep.sh` from your Desktop or a scratch folder
+- This creates a `copilot-demo/` repo with a "large" CSV file already committed
+- Have GitHub Copilot CLI installed and authenticated (`gh copilot --version`)
 
 **The scenario:**
 
