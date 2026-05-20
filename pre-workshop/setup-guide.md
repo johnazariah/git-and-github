@@ -18,7 +18,7 @@ Open **Terminal** (search for it in Spotlight, or find it in Applications → Ut
 git --version
 ```
 
-**If Git is already installed**, you'll see something like `git version 2.45.0` — you're done with this step.
+**If Git is already installed**, you'll see something like `git version 2.45.0` - you're done with this step.
 
 **If Git is NOT installed**, you'll be prompted to install the Xcode Command Line Tools. Click **Install** and wait a few minutes.
 
@@ -34,9 +34,9 @@ brew install git
 3. **Use the default settings** for all prompts, except:
    - Make sure **"Git Bash"** is selected (this gives you a Unix-like terminal)
    - For "Adjusting your PATH environment", select **"Git from the command line and also from 3rd-party software"**
-4. After installation, open **Git Bash** (search for it in the Start menu) — this is the terminal you'll use for the workshop
+4. After installation, open **Git Bash** (search for it in the Start menu) - this is the terminal you'll use for the workshop
 
-> ⚠️ **Windows users**: Use **Git Bash** for all terminal commands in this guide and during the workshop. PowerShell and CMD will work for basic Git, but the commands we demonstrate assume a Bash-like shell.
+> **Windows users**: Use **Git Bash** for all terminal commands in this guide and during the workshop. PowerShell and CMD will work for basic Git, but the commands we demonstrate assume a Bash-like shell.
 
 ### Linux
 
@@ -105,16 +105,16 @@ If you already have a GitHub account, skip to step 3b.
 1. Go to **https://github.com**
 2. Click **Sign Up**
 3. **Use your university email address** (e.g., `jane.smith@university.edu`)
-   - This is important — it makes it easy to verify your student status in the next step
+   - This is important - it makes it easy to verify your student status in the next step
    - You can add additional email addresses later
-4. Choose a username that you're comfortable being public — this becomes part of your professional identity (e.g., `jsmith-research`, not `xXx_destroyer_xXx`)
+4. Choose a username that you're comfortable being public - this becomes part of your professional identity (e.g., `jsmith-research`, not `xXx_destroyer_xXx`)
 5. Complete the sign-up process and verify your email
 
-### 3b. Apply for the GitHub Student Developer Pack ⭐
+### 3b. Apply for the GitHub Student Developer Pack
 
-This is **strongly recommended** — it gives you free access to:
-- **GitHub Copilot** (AI coding assistant — we'll demo this in the workshop)
-- **GitHub Codespaces** (cloud development environments — 180 hours/month free)
+This is **strongly recommended** - it gives you free access to:
+- **GitHub Copilot** (AI coding assistant - we'll demo this in the workshop)
+- **GitHub Codespaces** (cloud development environments - 180 hours/month free)
 - **GitHub Pro** (unlimited private repos, advanced features)
 - Dozens of other developer tools and learning resources
 
@@ -124,15 +124,15 @@ This is **strongly recommended** — it gives you free access to:
 2. Click **"Get your Pack"** (or "Sign up for Student Developer Pack")
 3. Select **"Student"** and your university
 4. Verify your status using **one** of these methods:
-   - **University email** (fastest — if your account uses a `.edu` or recognised university domain)
-   - **Upload proof** — a photo of your student ID, enrolment letter, or transcript
+   - **University email** (fastest - if your account uses a `.edu` or recognised university domain)
+   - **Upload proof** - a photo of your student ID, enrolment letter, or transcript
 5. Submit and wait for approval
 
-> **Timing**: Approval typically takes a few minutes to a few days. Apply **at least a week before the workshop** if possible. If you're not approved in time, you can still do everything in the workshop — Copilot and Codespaces are bonuses, not requirements.
+> **Timing**: Approval typically takes a few minutes to a few days. Apply **at least a week before the workshop** if possible. If you're not approved in time, you can still do everything in the workshop - Copilot and Codespaces are bonuses, not requirements.
 
 **How to check your status:**
-- Go to https://github.com/settings/billing — if you see "GitHub Pro" under your plan, you're approved
-- Or go to https://education.github.com/pack — it will show "You have the Student Developer Pack"
+- Go to https://github.com/settings/billing - if you see "GitHub Pro" under your plan, you're approved
+- Or go to https://education.github.com/pack - it will show "You have the Student Developer Pack"
 
 ---
 
@@ -253,8 +253,8 @@ GitHub Copilot is an AI assistant that can help you with Git commands, explain e
 ### Check if you have Copilot access
 
 1. Go to **https://github.com/settings/copilot**
-2. If you see a Copilot settings page (not a "buy" page), you have access ✅
-3. If you see a purchase page, your Student Developer Pack may not be approved yet — check back later
+2. If you see a Copilot settings page (not a "buy" page), you have access
+3. If you see a purchase page, your Student Developer Pack may not be approved yet - check back later
 
 ### Install Copilot in the terminal (CLI)
 
@@ -276,10 +276,10 @@ You should see Copilot explain what `git status` does. If you get an error about
 2. Go to the Extensions panel (`Ctrl/Cmd+Shift+X`)
 3. Search for **"GitHub Copilot"** and install it
 4. Search for **"GitHub Copilot Chat"** and install it
-5. You'll be prompted to sign in with your GitHub account — do so
-6. Once signed in, you should see a Copilot icon (✨) in the bottom status bar
+5. You'll be prompted to sign in with your GitHub account - do so
+6. Once signed in, you should see a Copilot icon in the bottom status bar
 
-> **Don't have access yet?** No worries — Copilot is a bonus, not a requirement for the workshop. We'll demo it from the stage and you can set it up afterwards.
+> **Don't have access yet?** No worries - Copilot is a bonus, not a requirement for the workshop. We'll demo it from the stage and you can set it up afterwards.
 
 ---
 
@@ -305,31 +305,31 @@ echo "=== GitHub Copilot (optional) ==="
 gh copilot --version 2>/dev/null || echo "Not installed (that's OK)"
 ```
 
-### ✅ You're ready if:
+### You're ready if:
 - [ ] `git --version` shows 2.30 or higher
 - [ ] `git config user.name` shows your name
 - [ ] `git config user.email` shows your email
 - [ ] `gh auth status` shows you're logged in
 
-### 🌟 Bonus points if:
+### Bonus points if:
 - [ ] GitHub Student Developer Pack is approved
 - [ ] `gh copilot` is installed and working
 - [ ] VS Code is installed with recommended extensions
 
 ---
 
-## 8. GitHub Codespaces — Your Cloud Backup Plan
+## 8. GitHub Codespaces - Your Cloud Backup Plan
 
-If your local setup isn't cooperating on workshop day, **GitHub Codespaces** gives you a full development environment in your browser — no installation required.
+If your local setup isn't cooperating on workshop day, **GitHub Codespaces** gives you a full development environment in your browser - no installation required.
 
 ### What is Codespaces?
 
-It's VS Code running in the cloud, connected directly to a GitHub repo. You get a terminal, an editor, Git, Python — everything you need for the workshop. It starts in about 60 seconds.
+It's VS Code running in the cloud, connected directly to a GitHub repo. You get a terminal, an editor, Git, Python - everything you need for the workshop. It starts in about 60 seconds.
 
 ### What does it cost?
 
 **Free for verified students.** The Student Developer Pack includes:
-- **180 core hours/month** (that's 90 hours on a 2-core machine — far more than you'll use)
+- **180 core hours/month** (that's 90 hours on a 2-core machine - far more than you'll use)
 - **20 GB storage/month**
 
 If you're not a verified student, free GitHub accounts still get **120 core hours/month**.
@@ -356,14 +356,14 @@ Want to verify Codespaces works before the workshop?
    git --version
    gh auth status
    ```
-4. If both work, you have a working backup environment 🎉
-5. **Stop the codespace when you're done** — go to https://github.com/codespaces, click the `...` menu next to it, and select "Stop codespace" (saves your free hours)
+4. If both work, you have a working backup environment
+5. **Stop the codespace when you're done** - go to https://github.com/codespaces, click the `...` menu next to it, and select "Stop codespace" (saves your free hours)
 
 > **When to use Codespaces vs. local**: Local is better for day-to-day research work (faster, works offline). Codespaces is great as a backup, for quick experiments, and when you need a consistent environment across machines. Our research templates include devcontainer configurations that make Codespaces environments fully pre-configured automatically.
 
 ### Managing your Codespaces
 
-- **Dashboard**: https://github.com/codespaces — see all your codespaces
+- **Dashboard**: https://github.com/codespaces - see all your codespaces
 - **Stop** a codespace when you're done to save hours (it auto-stops after 30 min of inactivity)
 - **Delete** codespaces you no longer need to free up storage
 - **Machine type**: The default 2-core machine is fine for everything in this workshop
@@ -396,7 +396,7 @@ Want to verify Codespaces works before the workshop?
 - Make sure you authorize the CLI in your browser when prompted
 
 **"could not determine base repo"**
-- This is fine — it just means you're not inside a Git repo. You'll be once the workshop starts.
+- This is fine - it just means you're not inside a Git repo. You'll be once the workshop starts.
 
 ### SSH issues
 
@@ -408,8 +408,8 @@ Want to verify Codespaces works before the workshop?
 ### GitHub Copilot issues
 
 **"Your account does not have Copilot access"**
-- Your Student Developer Pack may not be approved yet — check https://education.github.com/pack
-- You can still do the whole workshop without Copilot — it's a bonus
+- Your Student Developer Pack may not be approved yet - check https://education.github.com/pack
+- You can still do the whole workshop without Copilot - it's a bonus
 
 **"gh: 'copilot' is not a known extension"**
 - Run: `gh extension install github/gh-copilot`
@@ -432,8 +432,8 @@ Want to verify Codespaces works before the workshop?
 
 If you're stuck on any step, don't worry:
 
-1. **Come to the workshop 15 minutes early** — we'll help you get set up
+1. **Come to the workshop 15 minutes early** - we'll help you get set up
 2. **Email [INSTRUCTOR EMAIL]** with a screenshot of the error
-3. **Worst case**: we'll get you into a GitHub Codespace during the workshop — you'll be up and running in 60 seconds
+3. **Worst case**: we'll get you into a GitHub Codespace during the workshop - you'll be up and running in 60 seconds
 
 **The most important things are**: Git installed, GitHub account created, and authentication working. Everything else is a bonus.

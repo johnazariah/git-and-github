@@ -1,8 +1,8 @@
-# GitHub Copilot — Your AI Pair Programmer for Git
+# GitHub Copilot - Your AI Pair Programmer for Git
 
 ## What Is GitHub Copilot?
 
-GitHub Copilot is an AI assistant that understands Git, GitHub, and programming. It can explain commands, suggest solutions, debug problems, and walk you through complex Git operations — right in your terminal or editor.
+GitHub Copilot is an AI assistant that understands Git, GitHub, and programming. It can explain commands, suggest solutions, debug problems, and walk you through complex Git operations - right in your terminal or editor.
 
 Think of it as having a senior developer available 24/7 when you're stuck at midnight before a deadline.
 
@@ -58,7 +58,7 @@ gh copilot explain "git rebase -i HEAD~3"
 
 ## 5 Prompts Every Researcher Should Know
 
-### 1. "I committed a huge data file — help!"
+### 1. "I committed a huge data file - help!"
 ```bash
 gh copilot suggest "I accidentally committed a 500MB CSV file. How do I remove it from my git history?"
 ```
@@ -98,10 +98,10 @@ If you use VS Code, Copilot also works in the editor:
 
 ## Tips
 
-- **Be specific** in your prompts — "how do I undo a commit" is good, "fix git" is too vague
-- **Copilot explains its reasoning** — read the explanations, don't just copy commands
-- **It knows your context** — you can ask follow-up questions
-- **It's not perfect** — always understand what a command does before running it, especially anything with `--force` or `reset --hard`
+- **Be specific** in your prompts - "how do I undo a commit" is good, "fix git" is too vague
+- **Copilot explains its reasoning** - read the explanations, don't just copy commands
+- **It knows your context** - you can ask follow-up questions
+- **It's not perfect** - always understand what a command does before running it, especially anything with `--force` or `reset --hard`
 
 ---
 

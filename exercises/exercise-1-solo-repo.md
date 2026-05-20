@@ -4,7 +4,7 @@
 
 ## Your Task
 
-Create a Git repository for a mock research project. Pick any topic you're interested in — it doesn't need to be real data or working code.
+Create a Git repository for a mock research project. Pick any topic you're interested in - it doesn't need to be real data or working code.
 
 ## Steps
 
@@ -28,7 +28,7 @@ git commit -m "Add project README"
 ```
 
 ### 4. Create a Python script
-Create a file (e.g., `analysis.py` or `process_data.py`) with a few functions. It doesn't need to run — just something plausible:
+Create a file (e.g., `analysis.py` or `process_data.py`) with a few functions. It doesn't need to run - just something plausible:
 
 ```python
 """My analysis module."""
@@ -66,14 +66,14 @@ git commit -m "Add .gitignore for data files and Python artifacts"
 git log --oneline
 ```
 
-You should see 3 commits with meaningful messages. 🎉
+You should see 3 commits with meaningful messages.
 
 ---
 
 ## Finished Early?
 
 Try these:
-- `git log --graph --all --oneline` — visual history (more interesting once we add branches!)
-- `git diff HEAD~2` — see what changed over the last 2 commits
-- Edit a file, then run `git diff` BEFORE staging — see the working directory diff
-- Add more files and commits — a notebook, a config file, a `docs/` folder
+- `git log --graph --all --oneline` - visual history (more interesting once we add branches!)
+- `git diff HEAD~2` - see what changed over the last 2 commits
+- Edit a file, then run `git diff` BEFORE staging - see the working directory diff
+- Add more files and commits - a notebook, a config file, a `docs/` folder

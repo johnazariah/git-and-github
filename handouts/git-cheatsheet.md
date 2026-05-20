@@ -1,4 +1,4 @@
-# Git & GitHub Cheat Sheet — For Researchers
+# Git & GitHub Cheat Sheet - For Researchers
 
 ## Getting Started
 
@@ -69,13 +69,13 @@ git commit -m "Resolve merge conflict in <file>"
 | `git reset HEAD <file>` | Unstage a file (keep changes) |
 | `git revert <commit>` | Create a new commit that undoes a previous one |
 
-⚠️ **When in doubt, ask before you force-push.** `git push --force` rewrites history and can destroy your collaborator's work.
+**When in doubt, ask before you force-push.** `git push --force` rewrites history and can destroy your collaborator's work.
 
 ---
 
 ## Commit Message Guide
 
-### ✅ Good Messages
+### Good Messages
 ```
 Add regression analysis for hypothesis 2
 Fix off-by-one error in date range filtering
@@ -83,7 +83,7 @@ Clean temperature data: remove stations with >30% missing
 Update README with methods section and citation
 ```
 
-### ❌ Bad Messages
+### Bad Messages
 ```
 update
 fix
