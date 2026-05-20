@@ -1,0 +1,136 @@
+\documentclass[12pt, a4paper]{article}
+
+% ============================================================
+% Packages
+% ============================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{lipsum} % Remove this — only used for placeholder text
+
+% ============================================================
+% Metadata
+% ============================================================
+\title{Your Paper Title Here}
+\author{
+  First Author\textsuperscript{1} \and
+  Second Author\textsuperscript{2}
+}
+\date{May 2026}
+
+% ============================================================
+% Document
+% ============================================================
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  Replace this with your abstract. This template is designed to be
+  version-controlled with Git and automatically compiled to PDF via
+  GitHub Actions. Every push to the \texttt{paper/} directory triggers
+  a build, and every GitHub Release attaches the compiled PDF.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{Introduction}
+\label{sec:introduction}
+% ============================================================
+
+Introduce your research question and motivation here.
+
+This paper analyses historical temperature trends using data from the
+Australian Bureau of Meteorology. Our approach builds on prior work by
+\citet{example2024} and extends it to include seasonal decomposition.
+
+% ============================================================
+\section{Methods}
+\label{sec:methods}
+% ============================================================
+
+Describe your methodology here.
+
+\subsection{Data Collection}
+
+We collected daily temperature records from 2000--2023 across three
+Australian capital cities: Sydney, Melbourne, and Brisbane.
+
+\subsection{Statistical Analysis}
+
+We used linear regression to detect long-term trends:
+
+\begin{equation}
+  T(t) = \beta_0 + \beta_1 t + \epsilon
+  \label{eq:trend}
+\end{equation}
+
+where $T(t)$ is the mean annual temperature, $t$ is the year, and
+$\epsilon$ is the residual error term.
+
+% ============================================================
+\section{Results}
+\label{sec:results}
+% ============================================================
+
+Present your results here. Reference figures and tables:
+
+% Uncomment when you have a figure:
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.8\textwidth]{../figures/temperature_trends.pdf}
+%   \caption{Annual mean temperature trends for three Australian cities, 2000--2023.}
+%   \label{fig:trends}
+% \end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{Temperature trend coefficients by city.}
+  \label{tab:trends}
+  \begin{tabular}{lcc}
+    \toprule
+    City      & Slope (\textdegree C/year) & $R^2$ \\
+    \midrule
+    Sydney    & 0.023 & 0.67 \\
+    Melbourne & 0.019 & 0.58 \\
+    Brisbane  & 0.031 & 0.72 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ============================================================
+\section{Discussion}
+\label{sec:discussion}
+% ============================================================
+
+Interpret your results here. Compare with prior work, discuss
+limitations, and suggest future directions.
+
+% ============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+% ============================================================
+
+Summarise your key findings and their implications.
+
+% ============================================================
+% References
+% ============================================================
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+% ============================================================
+% Appendix (optional)
+% ============================================================
+% \appendix
+% \section{Supplementary Material}
+
+\end{document}

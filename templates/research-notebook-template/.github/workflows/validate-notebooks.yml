@@ -1,0 +1,48 @@
+name: Validate Notebooks
+
+on:
+  push:
+    paths:
+      - 'notebooks/**'
+      - 'src/**'
+      - 'requirements.txt'
+  pull_request:
+    paths:
+      - 'notebooks/**'
+      - 'src/**'
+      - 'requirements.txt'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run notebooks (execute and validate)
+        run: |
+          pip install nbconvert
+          for nb in notebooks/*.ipynb; do
+            echo "▶ Running: $nb"
+            jupyter nbconvert --to notebook --execute --ExecutePreprocessor.timeout=300 "$nb" --output /dev/null
+            echo "✅ Passed: $nb"
+          done
+
+      - name: Run tests
+        run: python -m pytest src/ -v --tb=short
+        if: hashFiles('src/**/test_*.py') != ''
+
+      - name: Lint with ruff
+        run: |
+          pip install ruff
+          ruff check src/ --output-format=github
+          ruff check notebooks/ --output-format=github

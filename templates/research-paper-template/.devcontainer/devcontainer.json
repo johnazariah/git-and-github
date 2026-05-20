@@ -1,0 +1,52 @@
+{
+  "name": "Research Paper (LaTeX)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/latex:1": {
+      "installScheme": "full"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "james-yu.latex-workshop",
+        "streetsidesoftware.code-spell-checker",
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "github.copilot"
+      ],
+      "settings": {
+        "latex-workshop.latex.autoBuild.run": "onSave",
+        "latex-workshop.latex.outDir": "%DIR%/build",
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "pdflatex → bibtex → pdflatex × 2",
+            "tools": ["pdflatex", "bibtex", "pdflatex", "pdflatex"]
+          }
+        ],
+        "latex-workshop.latex.tools": [
+          {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": ["-synctex=1", "-interaction=nonstopmode", "-output-directory=build", "%DOC%"]
+          },
+          {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": ["build/%DOCFILE%"]
+          }
+        ],
+        "files.exclude": {
+          "**/*.aux": true,
+          "**/*.log": true,
+          "**/*.out": true,
+          "**/*.synctex.gz": true,
+          "**/*.fls": true,
+          "**/*.fdb_latexmk": true
+        }
+      }
+    }
+  },
+  "postCreateCommand": "echo '✅ LaTeX environment ready. Open paper/main.tex to start writing.'"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Research Notebooks (Python)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "github.copilot"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "jupyter.notebookFileRoot": "${workspaceFolder}",
+        "notebook.formatOnSave.enabled": true
+      }
+    }
+  },
+  "postCreateCommand": "pip install -r requirements.txt && nbstripout --install && echo '✅ Environment ready. nbstripout is active — notebook outputs will be stripped on commit.'"
+}
