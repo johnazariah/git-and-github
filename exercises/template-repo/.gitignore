@@ -1,0 +1,30 @@
+# Data files
+data/
+*.csv
+*.h5
+*.parquet
+*.feather
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets and credentials
+.env
+credentials.json
+*.key
