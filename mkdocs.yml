@@ -1,0 +1,67 @@
+site_name: "Git & GitHub for Research Collaboration"
+site_description: "A 2-hour hands-on workshop for STEM graduate students"
+site_url: https://johnazariah.github.io/git-and-github/
+repo_url: https://github.com/johnazariah/git-and-github
+repo_name: johnazariah/git-and-github
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - toc:
+      permalink: true
+  - attr_list
+
+nav:
+  - Home: index.md
+  - Pre-Workshop Setup: pre-workshop/setup-guide.md
+  - Workshop Materials:
+    - "Exercise 1: Solo Repository": exercises/exercise-1-solo-repo.md
+    - "Exercise 2: Collaboration": exercises/exercise-2-collaboration.md
+  - Handouts:
+    - Git Cheat Sheet: handouts/git-cheatsheet.md
+    - GitHub Copilot One-Pager: handouts/copilot-one-pager.md
+  - Templates:
+    - "LaTeX Paper Template": templates/research-paper-template/README.md
+    - "Python Notebook Template": templates/research-notebook-template/README.md
+  - Resources: resources.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/johnazariah/git-and-github
+
+copyright: >
+  Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
