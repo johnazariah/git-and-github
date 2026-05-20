@@ -16,7 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-site:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -28,22 +28,17 @@ jobs:
           python-version: '3.12'
           cache: pip
 
-      - name: Install MkDocs and dependencies
-        run: |
-          pip install \
-            mkdocs-material \
-            pymdown-extensions
+      - name: Install MkDocs
+        run: pip install mkdocs-material pymdown-extensions
 
-      - name: Build MkDocs site
+      - name: Assemble docs and build site
         run: |
-          # Assemble docs/ from source files — single source of truth
-          mkdir -p docs/pre-workshop docs/exercises docs/handouts docs/templates/research-paper-template docs/templates/research-notebook-template
+          mkdir -p docs/pre-workshop docs/exercises docs/handouts \
+            docs/templates/research-paper-template \
+            docs/templates/research-notebook-template
 
-          # Copy site pages
           cp index.md docs/
           cp resources.md docs/
-
-          # Copy content files
           cp pre-workshop/setup-guide.md docs/pre-workshop/
           cp exercises/exercise-1-solo-repo.md docs/exercises/
           cp exercises/exercise-2-collaboration.md docs/exercises/
@@ -54,86 +49,78 @@ jobs:
 
           mkdocs build --strict
 
-      - name: Install PDF tooling
+      - name: Upload site
+        uses: actions/upload-artifact@v4
+        with:
+          name: mkdocs-site
+          path: site
+
+  build-pdfs:
+    runs-on: ubuntu-latest
+    container:
+      image: pandoc/extra:latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate PDFs
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq pandoc texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra lmodern > /dev/null 2>&1
+          mkdir -p pdfs
 
-      - name: Generate handout PDFs
-        run: |
-          mkdir -p site/pdfs
-
-          for file in handouts/*.md; do
-            filename=$(basename "$file" .md)
-            echo "▶ Converting $file → $filename.pdf"
-            pandoc "$file" \
-              -o "site/pdfs/${filename}.pdf" \
-              --pdf-engine=pdflatex \
-              -V geometry:margin=2cm \
-              -V fontsize=11pt \
-              -V colorlinks=true \
-              -V linkcolor=blue \
-              -V urlcolor=blue \
-              --highlight-style=tango \
-              -V header-includes='\usepackage{fancyhdr}\pagestyle{fancy}\fancyhead[L]{Git \& GitHub Workshop}\fancyhead[R]{\thepage}'
-            echo "✅ Generated: ${filename}.pdf"
-          done
-
-          # Also convert the setup guide
-          echo "▶ Converting setup guide"
-          pandoc pre-workshop/setup-guide.md \
-            -o "site/pdfs/setup-guide.pdf" \
-            --pdf-engine=pdflatex \
+          # Shared pandoc options
+          OPTS="--pdf-engine=xelatex \
             -V geometry:margin=2cm \
             -V fontsize=11pt \
             -V colorlinks=true \
             -V linkcolor=blue \
             -V urlcolor=blue \
-            --highlight-style=tango \
-            -V header-includes='\usepackage{fancyhdr}\pagestyle{fancy}\fancyhead[L]{Git \& GitHub Workshop}\fancyhead[R]{\thepage}'
-          echo "✅ Generated: setup-guide.pdf"
+            -V mainfont=DejaVuSans \
+            -V monofont=DejaVuSansMono \
+            --highlight-style=tango"
 
-          # Also convert the exercise sheets
-          for file in exercises/exercise-*.md; do
+          for file in handouts/*.md pre-workshop/setup-guide.md exercises/exercise-*.md; do
             filename=$(basename "$file" .md)
-            echo "▶ Converting $file → $filename.pdf"
-            pandoc "$file" \
-              -o "site/pdfs/${filename}.pdf" \
-              --pdf-engine=pdflatex \
-              -V geometry:margin=2cm \
-              -V fontsize=11pt \
-              -V colorlinks=true \
-              -V linkcolor=blue \
-              -V urlcolor=blue \
-              --highlight-style=tango \
-              -V header-includes='\usepackage{fancyhdr}\pagestyle{fancy}\fancyhead[L]{Git \& GitHub Workshop}\fancyhead[R]{\thepage}'
-            echo "✅ Generated: ${filename}.pdf"
+            echo "▶ $file → $filename.pdf"
+            pandoc "$file" -o "pdfs/${filename}.pdf" $OPTS
+            echo "✅ $filename.pdf"
           done
 
           echo ""
           echo "=== Generated PDFs ==="
-          ls -la site/pdfs/
+          ls -lh pdfs/
 
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-
-      - name: Upload PDFs as build artifact
+      - name: Upload PDFs
         uses: actions/upload-artifact@v4
         with:
           name: workshop-handouts-pdf
-          path: site/pdfs/*.pdf
+          path: pdfs/*.pdf
           retention-days: 90
 
   deploy:
     if: github.ref == 'refs/heads/main'
-    needs: build
+    needs: [build-site, build-pdfs]
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Download site
+        uses: actions/download-artifact@v4
+        with:
+          name: mkdocs-site
+          path: site
+
+      - name: Download PDFs
+        uses: actions/download-artifact@v4
+        with:
+          name: workshop-handouts-pdf
+          path: site/pdfs
+
+      - name: Upload combined pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
