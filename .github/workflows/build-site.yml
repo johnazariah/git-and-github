@@ -35,7 +35,24 @@ jobs:
             pymdown-extensions
 
       - name: Build MkDocs site
-        run: mkdocs build --strict
+        run: |
+          # Assemble docs/ from source files — single source of truth
+          mkdir -p docs/pre-workshop docs/exercises docs/handouts docs/templates/research-paper-template docs/templates/research-notebook-template
+
+          # Copy site pages
+          cp index.md docs/
+          cp resources.md docs/
+
+          # Copy content files
+          cp pre-workshop/setup-guide.md docs/pre-workshop/
+          cp exercises/exercise-1-solo-repo.md docs/exercises/
+          cp exercises/exercise-2-collaboration.md docs/exercises/
+          cp handouts/git-cheatsheet.md docs/handouts/
+          cp handouts/copilot-one-pager.md docs/handouts/
+          cp templates/research-paper-template/README.md docs/templates/research-paper-template/
+          cp templates/research-notebook-template/README.md docs/templates/research-notebook-template/
+
+          mkdocs build --strict
 
       - name: Install PDF tooling
         run: |

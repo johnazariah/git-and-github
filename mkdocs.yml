@@ -4,33 +4,6 @@ site_url: https://johnazariah.github.io/git-and-github/
 repo_url: https://github.com/johnazariah/git-and-github
 repo_name: johnazariah/git-and-github
 
-docs_dir: "."
-site_dir: "site"
-
-exclude_docs: |
-  site/
-  .github/
-  templates/*/.devcontainer/
-  templates/*/.github/
-  templates/*/src/
-  templates/*/notebooks/
-  templates/*/paper/
-  templates/*/data/
-  templates/*/outputs/
-  templates/*/figures/
-  templates/*/.gitignore
-  templates/*/requirements.txt
-  templates/*/jupytext.toml
-  exercises/template-repo/
-  instructor/
-  *.ipynb
-  *.py
-  *.tex
-  *.bib
-  *.txt
-  *.yml
-  !mkdocs.yml
-
 theme:
   name: material
   palette:
