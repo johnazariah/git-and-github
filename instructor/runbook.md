@@ -16,12 +16,20 @@
 - [ ] Print handouts: [Git Cheat Sheet](../handouts/git-cheatsheet.md), [Copilot One-Pager](../handouts/copilot-one-pager.md)
 - [ ] Pre-stage the Copilot demo scenario (see Block 6)
 - [ ] Have a backup plan for auth issues: HTTPS clone URLs + `gh auth login` as fallback
+- [ ] Have the **LaTeX paper template** repo ready for the Actions demo (pre-fork `templates/research-paper-template` to your own account, make one commit and verify the PDF Action runs)
 - [ ] Load this runbook on a second screen or tablet so you can glance at it
 
 ### Room Setup
 - Arrive 15 min early
 - Write on whiteboard/slide: **WiFi credentials**, **your GitHub username**, and the URL to the pre-workshop setup guide
 - Have a "parking lot" area on the board for questions you'll address later
+
+### Codespaces: The Safety Net
+Students who didn't complete setup (there will be some) can use **GitHub Codespaces** as a zero-setup fallback. Verified students get **180 free core hours/month** through the GitHub Student Developer Pack.
+
+- During the workshop, if someone is stuck on local setup, say: *"Click the green Code button on any repo → Codespaces → New codespace. You'll have a full environment in 60 seconds."*
+- Don't teach Codespaces formally — just deploy it as a rescue option
+- Our template repos have devcontainers, so Codespaces will be fully configured automatically
 
 ---
 
@@ -258,14 +266,14 @@ Display on screen:
 
 ---
 
-## Block 3: GitHub — Your Research Portfolio + Pages (20 min)
+## Block 3: GitHub — Your Research Portfolio + Actions (20 min)
 
 ### Timing
 | Segment | Duration |
 |---------|----------|
-| Push to GitHub | 8 min |
-| GitHub tour + turn on Pages | 7 min |
-| Students push their repos + Pages reveal | 5 min |
+| Push to GitHub | 7 min |
+| GitHub tour + Codespaces mention | 5 min |
+| Actions demo: push LaTeX → get PDF | 8 min |
 
 ### Push to GitHub
 
@@ -293,6 +301,7 @@ git push -u origin main
 **If auth issues arise:**
 - HTTPS: `gh auth login` is the fastest fix
 - SSH: if they set it up in pre-workshop, it should work
+- **Codespaces fallback**: "If your local setup isn't working, click the green Code button → Codespaces → New codespace. You'll have a full terminal in 60 seconds. It's free with your student account."
 - Don't spend more than 2 min on any one person's auth issue — note it and move on
 
 ### GitHub Tour (5 min)
@@ -303,32 +312,60 @@ In the browser, show:
 - **Issues tab** — "Use this to track TODOs, experiment ideas, bugs. Way better than a text file."
 - **Create a quick Issue**: "TODO: Add visualisation for temperature trends" — show labels, assignment
 
-### Turn on GitHub Pages (2 min)
+**Codespaces mention (30 seconds):**
+> "Quick aside — see the green Code button? Click it and you'll see Codespaces. That gives you a full VS Code environment in the browser, connected to your repo. No local setup needed. It's free for students — 180 hours a month through the GitHub Student Developer Pack. If your local setup isn't cooperating today, this is your escape hatch."
 
-> "Now I'm going to show you something that takes 30 seconds and will blow your mind."
+### Actions Demo: Push LaTeX → Get PDF (8 min) ⭐
 
-1. **Settings → Pages**
-2. Source: **GitHub Actions** (or Deploy from branch → `main`, `/root`)
-3. Save
+> "OK, now let me show you something that will change how you write papers."
 
-> "GitHub is now building a website from your repo. It takes about a minute. Let's keep going and check back."
+**Switch to your pre-prepared LaTeX paper template repo** (forked from `templates/research-paper-template` before the workshop).
 
-### Students Push + Pages Moment (5 min)
+> "This is a template I've set up for writing research papers. It has a LaTeX file, a bibliography, and a GitHub Action — a little script that runs automatically whenever I push changes."
 
-> "Everyone: push your exercise repo to GitHub now. Once it's up, go to Settings → Pages and turn it on."
+**Show the structure briefly:**
+```
+paper/
+├── main.tex          ← Your paper
+└── references.bib    ← BibTeX references
+.github/workflows/
+└── build-paper.yml   ← The automation
+```
 
-Give them 3-4 minutes. Then:
+**Open `paper/main.tex` in the browser editor** (click the pencil icon), make a visible change — e.g., update the title or add a sentence to the introduction. Commit directly to `main`.
 
-> "OK, check your Pages URL — it's `https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/`. What do you see?"
+> "I just changed one line and committed. Now watch the Actions tab."
 
-They should see their README rendered as a web page.
+**Click the Actions tab.** Show the workflow running:
 
-> "You just published a website by pushing a Git commit. That green checkmark in the Actions tab? That's a **GitHub Action** that ran automatically to build and deploy your site. You can set up Actions to do anything on every push — run tests, validate data, build documentation, regenerate figures. For now, just know it's there."
+> "GitHub saw that I changed a file in `paper/`, so it spun up a machine, installed LaTeX, and is compiling my paper right now. This takes about 60 seconds."
+
+While it builds, explain:
+
+> "Think about what this means for your workflow. You push your LaTeX source. GitHub builds the PDF. Your collaborators can see the compiled output. No more emailing PDFs back and forth, no more 'which version did you compile?'"
+
+**When the build completes (~60 seconds):**
+1. Click into the completed run
+2. Show the **PDF artifact** — download it, open it
+3. "There's your compiled paper. Automatic. Every single push."
+
+**Connect it back to Zenodo:**
+> "Remember Zenodo from the start? When you create a Release on GitHub, there's a second Action that attaches the PDF to the release. Connect that to Zenodo, and you have: push LaTeX → compile PDF → create release → archived with a DOI. From your text editor to a citable publication in one pipeline."
+
+**Then show the notebook template (30 seconds):**
+> "We've also got a template for Python notebook projects. It auto-strips notebook outputs before commit, runs all your notebooks on every push to check they still work, and comes with a Codespaces devcontainer so you can start coding in 60 seconds. I'll share links to both templates at the end."
+
+### Students Push Their Repos (remaining time)
+
+> "Everyone: push your exercise repo to GitHub now if you haven't already."
+
+Walk the room while students push.
 
 ### Instructor Notes
-- The Pages URL takes 30-60 seconds to go live. If it's not ready, say "give it another minute" and move on.
-- Some students may not have a README that renders well — that's fine, the point is the mechanism.
-- If you want a more impressive demo, have a pre-built repo with a nicer README (badges, images, sections) to show what's possible.
+- The LaTeX Action demo needs to be pre-staged. Fork the template to your account and push at least once before the workshop to verify the Action runs.
+- If the Action is slow or fails, have a screenshot/recording as backup.
+- Don't get into YAML syntax — "you don't need to write this from scratch, you fork the template and it just works."
+- If students ask about Codespaces cost: "Free for verified students — 180 core hours/month through the GitHub Student Developer Pack. More than enough."
 
 ---
 
@@ -524,9 +561,14 @@ Let a few people respond. Then:
 
 4. **Tag your submissions** — `git tag v1.0-submitted-to-nature` — marks the exact snapshot you submitted
 
-5. **GitHub + Zenodo** — "You can get a DOI for your GitHub repo. Cite your code like a paper."
-
 > "The cheat sheet I'm handing out has all of these plus notebook-specific tips."
+
+**Templates (put URLs on screen):**
+> "Two things to take home today. We built template repos you can fork right now:"
+> - **Research Paper Template** — LaTeX + GitHub Actions that auto-build your PDF on every push, Codespaces devcontainer with TeXLive, Release workflow for Zenodo
+> - **Research Notebook Template** — Python + Jupyter with nbstripout pre-configured, CI that executes all your notebooks on push, Codespaces devcontainer with your data science stack
+>
+> "Fork one, start your project, and you get all the automation for free."
 
 ---
 
@@ -603,6 +645,7 @@ Take questions for remaining time. Common ones:
 ### If many students can't authenticate with GitHub
 - Have `gh auth login` as the universal fix
 - HTTPS clone URLs as fallback
+- **Codespaces escape hatch**: "Click the green Code button → Codespaces → New codespace. Free for students, 180 hours/month. You'll have a full terminal in 60 seconds."
 - Worst case: have one student share their screen for the collaboration demo, others follow conceptually
 
 ### If you're running behind

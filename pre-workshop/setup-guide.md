@@ -200,3 +200,14 @@ If all three work, you're ready! 🎉
 ## Need Help?
 
 If you're stuck, don't worry — come to the workshop 15 minutes early and we'll get you sorted. You can also email [INSTRUCTOR EMAIL] with a screenshot of the error.
+
+### Can't get local setup working?
+
+If all else fails, you can use **GitHub Codespaces** — a full development environment in your browser, no local installation needed. It's free for verified students (180 hours/month through the Student Developer Pack).
+
+1. Go to any GitHub repository
+2. Click the green **Code** button
+3. Click **Codespaces → New codespace**
+4. You'll have a full terminal + editor in ~60 seconds
+
+This is a great backup plan, but we recommend local setup if possible — it's the environment you'll use day-to-day in your research.
