@@ -25,14 +25,14 @@
 
 ---
 
-## Block 1: Why Version Control Matters for Research (10 min)
+## Block 1: Why Git? From Chaos to Citable Code (10 min)
 
 ### Timing
 | Segment | Duration |
 |---------|----------|
-| The horror story | 3 min |
-| What Git actually does | 3 min |
-| Research motivations + show a real repo | 4 min |
+| The horror story + what Git does | 3 min |
+| Zenodo: your code gets a DOI | 4 min |
+| Show a real repo + Zenodo badge | 3 min |
 
 ### Talking Points
 
@@ -42,28 +42,35 @@
 Wait for laughs. Follow up:
 > "Who has emailed a script to a collaborator and then lost track of which version is current?"
 
-**The problem (2 min):**
-- Research involves constant iteration — you try things, back up, try again
-- Without version control, your options are: copy folders, rename files, or pray
-- Collaboration makes it 10× worse — who changed what? when? why?
+**The problem → the solution (2 min):**
+- Research is iteration — you try things, back up, try again
+- Without version control: copy folders, rename files, pray
+- Git takes **snapshots** of your project at moments you choose. Every snapshot has a message explaining *what* and *why*. You can go back to any snapshot, compare any two, branch off in different directions
+- Mental model: **Git is a lab notebook for your code**
 
-**What Git does (3 min):**
-- Git takes **snapshots** of your project at moments you choose
-- Every snapshot has a message explaining *what changed and why*
-- You can go back to any snapshot, compare any two, branch off in different directions
-- Mental model: **Git is a lab notebook for your code and analysis**
+**Zenodo: the punchline (4 min):**
 
-**Why researchers specifically need this (4 min):**
-- **Reproducibility**: Reviewer asks "how exactly did you generate Figure 3?" → you can point to the exact snapshot
-- **Collaboration with a trail**: Your supervisor can see what you changed, when, and why — no more "I think I updated the regression last Tuesday?"
-- **Journal requirements**: Many journals now require code/data repositories (Nature, PLOS, etc.)
-- **Show a real example**: Pull up a published paper's companion GitHub repo
-  - Suggestions: any repo linked from a Nature paper, or search GitHub for "companion code" + your field
-  - Point out: README as documentation, commit history as a timeline, releases tagged to paper versions
+> "OK, so Git tracks your work. GitHub puts it online. But here's the thing that matters to you as researchers — you can turn your GitHub repo into a **citable publication** with a DOI. In about 2 minutes."
+
+Show Zenodo (zenodo.org):
+1. Pull up the Zenodo–GitHub integration page
+2. Walk through the concept: you connect your GitHub repo → create a Release on GitHub → Zenodo automatically archives it and mints a DOI
+3. Show a real example: find a Zenodo-archived research repo with the DOI badge in the README
+
+> "That DOI goes in your paper's data availability statement. Reviewers click it, they see your exact code at the exact version you submitted. That's reproducibility."
+
+> "Some of you are thinking 'my supervisor doesn't care about my code.' Here's the thing — journals increasingly **require** it. Nature, PLOS, Science — they all have data/code availability policies now. And even if your journal doesn't require it, your h-index will thank you when people cite your software."
+
+**Show a real research repo (3 min):**
+- Pull up a published paper's companion GitHub repo (find one with a Zenodo DOI badge)
+- Point out: README as documentation, the DOI badge, commit history as a timeline, releases tagged to paper versions
+- "By the end of today, you'll know how to build exactly this."
 
 ### Instructor Notes
-- Don't oversell — be honest that Git has a learning curve. "It will feel weird for about a week, then you'll wonder how you lived without it."
+- The Zenodo moment should land like a revelation — many grad students don't know this exists
+- Don't demo the full Zenodo setup live (that's fiddly). Just show the concept and the end result. The cheat sheet has the steps.
 - If someone asks about Google Docs/Overleaf: "Those are great for documents. Git is for code, scripts, data pipelines, config files — the computational side of your research."
+- Don't oversell — be honest that Git has a learning curve. "It will feel weird for about a week, then you'll wonder how you lived without it."
 
 ---
 
